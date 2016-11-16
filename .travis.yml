@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+language: ruby
+before_install:
+  - docker pull ubuntu:latest
+  - docker run ubuntu:latest /bin/bash &
+  - docker exec `docker ps | tail -1 | awk '{ print $1 }'` hostname
