@@ -6,6 +6,6 @@ services:
 language: ruby
 before_install:
   - docker pull ubuntu:latest
-  - docker run -it ubuntu:latest /bin/bash &
+  - docker run -d --name foo ubuntu:latest sleep 30
   - docker ps
-  - docker exec `docker ps | tail -1 | awk '{ print $1 }'` hostname
+  - docker exec foo hostname
